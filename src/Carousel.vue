@@ -63,7 +63,7 @@ export default {
     },
     imgArray: {
       type: Array,
-      default: []
+      default: () => {}
     },
     autoplay: {
       type: Boolean,
@@ -85,7 +85,7 @@ export default {
       let vm = this
       if (ln > 2) {
         this.initLength = this.imgArray.length
-        if(this.loop){
+        if (this.loop) {
           this.imgArray = [arr[ln - 1]].concat(arr, [arr[0]])
         }
         let $container = this.$el
@@ -126,25 +126,25 @@ export default {
           prevPos = movePos = 0
         })
       }
-      vm.setTranslateX(-this.index * this.WIDTH )
+      vm.setTranslateX(-this.index * this.WIDTH)
     },
     touchstart () {
-      clearTimeout(this.loopTimeout);
+      clearTimeout(this.loopTimeout)
     },
     touchmove (diff) {
-        let vm = this
-        let moved = parseFloat(this.transformX) + Number(diff);
-        if(moved > 0){
-          moved = 0;
-        }
-        console.log(moved)
-        if(moved < -(this.imgArray.length - 1) * this.WIDTH){
-          moved = -(this.imgArray.length - 1) * this.WIDTH
-        }
-        vm.setTranslateX(moved);
+      let vm = this
+      let moved = parseFloat(this.transformX) + Number(diff)
+      if (moved > 0) {
+        moved = 0
+      }
+      console.log(moved)
+      if (moved < -(this.imgArray.length - 1) * this.WIDTH) {
+        moved = -(this.imgArray.length - 1) * this.WIDTH
+      }
+      vm.setTranslateX(moved)
     },
     setTranslateX (moved) {
-      this.transformX = moved;
+      this.transformX = moved
     },
     touchend (diffTime, diff, $container, _diff) {
       let direction
@@ -184,12 +184,11 @@ export default {
     },
     toRight (cb) {
       let width = this.WIDTH
-      let $target = this.$el
       let move = 0
       move = this.index * width
       this.transformX = -move
       this.transition = 'all ease-in 1s'
-      setTimeout((() => {
+      setTimeout(() => {
         if (!this.index) {
           if (this.loop) {
             this.index = this.initLength
@@ -199,26 +198,25 @@ export default {
         if (Object.prototype.toString.call(cb) === '[object Function]') {
           cb()
         }
-      }).bind(this), 1000)
+      }, 1000)
     },
     toLeft (cb) {
       let width = this.WIDTH
-      let $target = this.$el
       let move = 0
       move = this.index * width
       this.transformX = -move
       this.transition = 'all ease-in 1s'
-      setTimeout((() => {
+      setTimeout(() => {
         if (this.index >= this.initLength - 1) {
           if (this.loop) {
             this.index = 1
-            this.transformX = -this.index * this.WIDTH + 'px';
+            this.transformX = -this.index * this.WIDTH + 'px'
           }
         }
         if (Object.prototype.toString.call(cb) === '[object Function]') {
           cb()
         }
-      }).bind(this), 1000)
+      }, 1000)
     }
   },
   mounted () {
@@ -232,8 +230,8 @@ export default {
       transition: '',
       loopTimeout: 0,
       WIDTH: 0,
-      drag:false,
-      index:0
+      drag: false,
+      index: 0
     }
   }
 }

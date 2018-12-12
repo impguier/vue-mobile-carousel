@@ -4,7 +4,7 @@
       :initIndex = 0
       :speed = 1000
       :height = 400
-      :imgArray = imgArray
+      :imgArr = imgArr
       :autoplay = true
       ></Carousel>
   </div>
@@ -12,7 +12,7 @@
 
 <script>
 import HelloWorld from './components/HelloWorld'
-import Carousel from './Carousel'
+import Carousel from './view_carousel'
 
 export default {
   name: 'App',
@@ -22,10 +22,11 @@ export default {
   },
   data () {
     return {
-      imgArray: [
+      imgArr: [
         'https://static.hexindai.com/attachment/uploads/homepic/2018/11/30/1543572816_homepic.png',
         'https://static.hexindai.com/attachment/uploads/homepic/2018/11/19/1542633499_homepic.png',
-        'https://static.hexindai.com/attachment/uploads/homepic/2018/11/02/1541109562_homepic.png'
+        'https://static.hexindai.com/attachment/uploads/homepic/2018/11/02/1541109562_homepic.png',
+        'https://static.hexindai.com/attachment/uploads/homepic/2018/11/30/1543572582_homepic.png'
       ]
     }
   }
