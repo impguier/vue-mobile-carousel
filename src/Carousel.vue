@@ -4,21 +4,63 @@
   >
     <div class="carousel-content"
       :style="{
-      transform: `translateX(${transformX}px)`,
-      transition: drag ? 'none' : transition,
+      transform: `translate(${transformX}px,0) translateZ(0)`,
       height:`${height}px`
     }">
       <ul class="carousel"
       :style="{width:`${imgArray.length * 100}%`}">
-      <li class="carousel-element"
-      :style="{width:`${WIDTH}px`}"
-      v-if="imgArray.length" :key="index" v-for="(src,index) in imgArray">
-        <div class="img-container">
-          <img :src="src" alt>
-        </div>
-      </li>
-    </ul>
+        <li class="carousel-element"
+            :style="{
+              width:`${WIDTH}px`,
+              position:'absolute',
+              height:`${height}px`,
+              left:0
+            }"
+        >
+            <a :href="imgArray[imgArray.length-1].href" class="img-container">
+              <FakeImg :src="imgArray[imgArray.length-1].src"
+                       :height="height"
+                       :width="WIDTH"
+              ></FakeImg>
+            </a>
+        </li>
+        <li class="carousel-element"
+            :style="{
+              width:`${WIDTH}px`,
+              position:'absolute',
+              left:`${ (index+1) * 100 }%`,
+              height:`${height}px`
+            }"
+            v-if="imgArray.length" :key="index" v-for="(item,index) in imgArray">
+            <a :href="item.href" class="img-container">
+             <FakeImg  :src="item.src"
+                       :height="height"
+                       :width="WIDTH"
+              ></FakeImg>
+            </a>
+        </li>
+        <li class="carousel-element"
+            :style="{
+              width:`${WIDTH}px`,
+              position:'absolute',
+              height:`${height}px`,
+              left:`${ (imgArray.length+1) * 100 }%`
+            }"
+        >
+            <a :href="imgArray[0].href" class="img-container">
+              <FakeImg :src="imgArray[0].src"
+                       :height="height"
+                       :width="WIDTH"
+              ></FakeImg>
+            </a>
+        </li>
+      </ul>
     </div>
+    <Pagenation
+      :length=imgArray.length
+      :active=index
+    >
+    </Pagenation>
   </div>
 </template>
 <style lang="" scoped>
@@ -47,7 +89,14 @@
 }
 </style>
 <script>
+import Pagenation from './components/Pagenation'
+import FakeImg from './components/FakeImg'
 export default {
+  name: 'carousel',
+  components: {
+    Pagenation,
+    FakeImg
+  },
   props: {
     placeholderImgSrc: {
       type: String,
@@ -55,11 +104,15 @@ export default {
     },
     speed: {
       type: Number,
-      default: 500
+      default: 3000
     },
-    height: {
+    initPage: {
       type: Number,
-      default: 500
+      default: 0
+    },
+    expect_height: {
+      type: Number,
+      default: 0
     },
     imgArray: {
       type: Array,
@@ -68,14 +121,6 @@ export default {
     autoplay: {
       type: Boolean,
       default: true
-    },
-    beforeSlide: {
-      type: Object,
-      default: function () {}
-    },
-    afterSlide: {
-      type: Object,
-      default: function () {}
     }
   },
   methods: {
@@ -85,9 +130,6 @@ export default {
       let vm = this
       if (ln > 2) {
         this.initLength = this.imgArray.length
-        if (this.loop) {
-          this.imgArray = [arr[ln - 1]].concat(arr, [arr[0]])
-        }
         let $container = this.$el
         let startPos
         let movePos
@@ -99,11 +141,11 @@ export default {
           event.stopPropagation()
           startPos = event.touches[0].clientX
           startTime = new Date().getTime()
-          vm.touchstart()
-          vm.drag = true
+          clearInterval(vm.interval)
         })
         $container.addEventListener('touchmove', function (event) {
           event.stopPropagation()
+          if (vm.moving) return
           movePos = event.touches[0].clientX
           if (prevPos) {
             diff = movePos - prevPos
@@ -121,117 +163,110 @@ export default {
           let diffTime = startTime - endTime
           if (movePos) {
             vm.drag = false
-            vm.touchend(diffTime, diff, $container, _diff)
+            vm.touchend(diffTime, _diff)
           }
           prevPos = movePos = 0
         })
       }
-      vm.setTranslateX(-this.index * this.WIDTH)
+      this.transformX = -this.index * this.WIDTH
     },
     touchstart () {
       clearTimeout(this.loopTimeout)
     },
     touchmove (diff) {
-      let vm = this
       let moved = parseFloat(this.transformX) + Number(diff)
-      if (moved > 0) {
-        moved = 0
-      }
-      console.log(moved)
-      if (moved < -(this.imgArray.length - 1) * this.WIDTH) {
-        moved = -(this.imgArray.length - 1) * this.WIDTH
-      }
-      vm.setTranslateX(moved)
-    },
-    setTranslateX (moved) {
       this.transformX = moved
     },
-    touchend (diffTime, diff, $container, _diff) {
-      let direction
+    touchend (diffTime, _diff) {
       let vm = this
+      let index = vm.index
       const WIDTH = window.getComputedStyle(vm.$el, null).getPropertyValue('width')
       if (diffTime < 600) {
-        if (diff > 0) {
-          direction = 'Right'
-          vm.index = vm.index === 0 ? 0 : vm.index - 1
+        if (_diff > 0) {
+          index -= 1
         } else {
-          direction = 'Left'
-          vm.index = vm.index === vm.imgArray.length - 1 ? vm.index : vm.index + 1
+          index += 1
         }
       } else {
-        if (Math.abs(_diff) < (WIDTH / 2)) {
-          if (diff > 0) {
-            direction = 'Right'
+        if (Math.abs(_diff) >= (WIDTH / 2)) {
+          if (_diff > 0) {
+            index -= 1
           } else {
-            direction = 'Left'
-          }
-        } else {
-          if (diff > 0) {
-            direction = 'Right'
-            vm.index -= 1
-            vm.index = vm.index === 0 ? 0 : vm.index - 1
-          } else {
-            direction = 'Left'
-            vm.index = vm.index === vm.initLength ? vm.index : vm.index + 1
+            index += 1
           }
         }
       }
-      vm[`to${direction}`]($container, () => {
-        if (this.loop) {
-          console.log('loooooooop')
+      vm.index = index
+      vm.pageTo(index)
+      vm.drag = false
+      if (this.autoplay) {
+        vm.autoStart()
+      }
+    },
+    pageTo (page) {
+      let vm = this
+      let former = this.transformX
+      vm.animate(-page * this.WIDTH - former, () => {
+        if (vm.index === 0 || vm.index >= vm.imgArray.length + 1) {
+          vm.transformX = -Math.abs(vm.imgArray.length - vm.index) * vm.WIDTH
+          vm.index = Math.abs(vm.imgArray.length - vm.index)
         }
       })
+      vm.index = page
     },
-    toRight (cb) {
-      let width = this.WIDTH
-      let move = 0
-      move = this.index * width
-      this.transformX = -move
-      this.transition = 'all ease-in 1s'
-      setTimeout(() => {
-        if (!this.index) {
-          if (this.loop) {
-            this.index = this.initLength
-            this.transformX = -this.index * this.WIDTH + 'px'
-          }
-        }
-        if (Object.prototype.toString.call(cb) === '[object Function]') {
-          cb()
-        }
-      }, 1000)
+    autoStart () {
+      this.interval = setInterval(() => {
+        this.pageTo(this.index + 1)
+      }, this.speed)
     },
-    toLeft (cb) {
-      let width = this.WIDTH
-      let move = 0
-      move = this.index * width
-      this.transformX = -move
-      this.transition = 'all ease-in 1s'
-      setTimeout(() => {
-        if (this.index >= this.initLength - 1) {
-          if (this.loop) {
-            this.index = 1
-            this.transformX = -this.index * this.WIDTH + 'px'
-          }
+    animate (distance, callback) {
+      let startTime
+      let vm = this
+      let former = this.transformX
+      let animateFunc = (time) => {
+        let percent = 0
+        if (!startTime) {
+          startTime = time
         }
-        if (Object.prototype.toString.call(cb) === '[object Function]') {
-          cb()
+        vm.moving = true
+        percent = (time - startTime) / vm.raq.duration
+        if (percent >= 1) {
+          vm.moving = false
+          this.transformX = distance + former
+          window.cancelAnimationFrame(vm.raq.timeout)
+          vm.$nextTick(callback)
+        } else {
+          this.transformX = percent * distance + former
+          vm.raq.timeout = window.requestAnimationFrame(animateFunc)
         }
-      }, 1000)
+      }
+      vm.raq.timeout = window.requestAnimationFrame(animateFunc)
     }
+
   },
   mounted () {
     const WIDTH = parseFloat(window.getComputedStyle(this.$el, null).getPropertyValue('width'))
     this.WIDTH = WIDTH
+    this.height = ~~(WIDTH / this.BASE * this.expect_height)
+    this.index = this.initPage + 1
     this.init()
+    if (this.autoplay) {
+      this.autoStart()
+    }
   },
   data () {
     return {
       transformX: 0,
-      transition: '',
-      loopTimeout: 0,
+      transition: 'all ease-out .3s',
       WIDTH: 0,
-      drag: false,
-      index: 0
+      height:0,
+      BASE: 750,
+      index: undefined,
+      raq: {
+        timeout: 0,
+        duration: 300
+      },
+      interval: 0
     }
   }
 }
