@@ -19,6 +19,9 @@
     background:rgba(255, 255, 255, 0.8);
     transition: all ease-in .3s;
   }
+  .icon-circle:last-child{
+    margin-right: 0;
+  }
   .icon-circle.active{
     background:rgba(0, 0, 0, 0.6);
   }
