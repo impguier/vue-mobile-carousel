@@ -1,6 +1,6 @@
 {
   "name": "vue-mobile-carousel",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Vue Carousel",
   "author": "long_long_ice@aliyun.com",
   "main":"dist/index.js",
