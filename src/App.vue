@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Carousel
-      :initIndex = 0
+      :initPage = 0
       :speed = 3000
       :expect_height = 280
       :imgArray = imgArray
@@ -11,9 +11,7 @@
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld'
-import Carousel from './Carousel'
-
+import Carousel from './components/Carousel'
 export default {
   name: 'App',
   components: {

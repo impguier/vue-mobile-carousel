@@ -1,21 +1,37 @@
-# vue-carousel
+###Vue-mobile-carousel
 
-> Vue Carousel
+[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com)
 
-## Build Setup
+#### Installation
+    npm i vue-mobile-carousel
 
-``` bash
-# install dependencies
-npm install
+#### Usage
+    import Carousel from 'vue-mobile-carousel'
 
-# serve with hot reload at localhost:8080
-npm run dev
+    export default {
+      ...
+      components:{
+        Carousel
+      }
+      ...
+    }
+#### Config
+| key               | value                     |   description   |
+| --------          | ---------                 | -----------     |
+| initPage          | Number                    | init page for show     |
+| speed             | Number (sec)              | per active's time     |
+| expect_height     | Number (px)               |  image's actually height     |
+| imgArray          | Array                     | for example:[{src:'x.png',href:'x.html'}]    |
+| autoplay          | Boolean (default:false)   | autoplay    |
 
-# build for production with minification
-npm run build 
-
-# build for production and view the bundle analyzer report
-npm run build --report
-```
-
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+#### Example
+    <Carousel
+      :initPage = 0
+      :speed = 3000
+      :expect_height = 280
+      :imgArray = imgArray
+      :autoplay = true
+      ></Carousel>
+#### Run in local
+    npm i install
+    npm run dev

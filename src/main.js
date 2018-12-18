@@ -2,21 +2,12 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './App'
-import Carousel from './Carousel'
-
-Vue.config.productionTip = false
-
+import Carousel from './index'
+debugger
+Vue.use(Carousel)
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   components: { App },
   template: '<App/>'
 })
-const install = Vue => {
-  Vue.component('carousel', Carousel)
-}
-
-export default {
-  install
-}
-export { Carousel }
