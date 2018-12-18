@@ -1,9 +1,9 @@
 {
   "name": "vue-mobile-carousel",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Vue Carousel",
   "author": "long_long_ice@aliyun.com",
-  "main":"dist/index.js",
+  "main":"dist/vue-mobile-carousel.min.js",
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "start": "npm run dev",
