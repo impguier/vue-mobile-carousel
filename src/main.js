@@ -3,7 +3,6 @@
 import Vue from 'vue'
 import App from './App'
 import Carousel from './index'
-debugger
 Vue.use(Carousel)
 /* eslint-disable no-new */
 new Vue({

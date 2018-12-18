@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "Vue Carousel",
   "author": "long_long_ice@aliyun.com",
-  "private": true,
   "main":"dist/index.js",
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
