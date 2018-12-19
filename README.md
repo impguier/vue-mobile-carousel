@@ -24,6 +24,13 @@
 | imgArray          | Array                     | for example:[{src:'x.png',href:'x.html'}]    |
 | autoplay          | Boolean (default:false)   | autoplay    |
 
+### For example
+
+width of image bases on standard screen width(750)
+
+if image's height 750 * 280 ,when screen width is 375, the height is 140
+
+
 #### Example
     <Carousel
       :initPage = 0
