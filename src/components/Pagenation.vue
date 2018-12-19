@@ -3,7 +3,7 @@
     <span :key="i" class="icon-circle" :class="{ 'active':i==active }" v-for="i in length"></span>
   </div>
 </template>
-<style lang="">
+<style scoped>
   .pagenation-navi{
     width: 100%;
     text-align: center;

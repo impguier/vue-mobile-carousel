@@ -6,7 +6,7 @@
     npm i vue-mobile-carousel
 
 #### Usage
-    import Carousel from 'vue-mobile-carousel'
+    import { Carousel } from 'vue-mobile-carousel'
 
     export default {
       ...

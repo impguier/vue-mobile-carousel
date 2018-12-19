@@ -1,7 +1,9 @@
 <template>
-  <img :src="`${initSrc}/${width}x${height}.png?text=Loading`" v-on:load.once="setTrueSrc" alt="">
+  <img
+    :src="`${initSrc}/${width}x${height}.png?text=Loading`"
+    v-on:load.once="setTrueSrc" alt="">
 </template>
-<style lang="">
+<style scoped>
   img{
     display:block;
     width: 100%;

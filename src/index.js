@@ -1,9 +1,5 @@
 import Carousel from './components/Carousel'
-
-const install = (Vue, opts = {}) => {
-  Vue.component('Carousel', Carousel)
+const install = Vue => {
+  Vue.component('carousel', Carousel)
 }
-export default {
-  install
-}
-export { Carousel }
+export default { install, Carousel }

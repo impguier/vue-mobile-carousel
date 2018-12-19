@@ -8,6 +8,7 @@
       height:`${height}px`
     }">
       <ul class="carousel"
+      v-if="imgArray.length"
       :style="{width:`${(imgArray.length + 2) * 100}%`}">
         <li class="carousel-element"
             :style="{
@@ -31,7 +32,7 @@
               left:`${ (index+1) * 100 }%`,
               height:`${height}px`
             }"
-            v-if="imgArray.length" :key="index" v-for="(item,index) in imgArray">
+            :key="index" v-for="(item,index) in imgArray">
             <a :href="item.href" class="img-container">
              <FakeImg  :src="item.src"
                        :height="height"
@@ -63,7 +64,7 @@
     </Pagenation>
   </div>
 </template>
-<style lang="" scoped>
+<style scoped>
 .carousel-container {
   width: 100%;
   margin: 0 auto;
@@ -92,7 +93,7 @@
 import Pagenation from './Pagenation'
 import FakeImg from './FakeImg'
 export default {
-  name: 'Carousel',
+  name: 'carousel',
   components: {
     Pagenation,
     FakeImg

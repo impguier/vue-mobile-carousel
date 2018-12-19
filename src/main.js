@@ -1,12 +1,8 @@
-// The Vue build version to load with the `import` command
-// (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
-import App from './App'
-import Carousel from './index'
-Vue.use(Carousel)
-/* eslint-disable no-new */
-new Vue({
+import App from './App.vue'
+let vm = new Vue({
   el: '#app',
   components: { App },
   template: '<App/>'
 })
+return vm
