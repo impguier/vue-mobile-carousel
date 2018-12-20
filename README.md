@@ -19,17 +19,10 @@
 | key               | value                     |   description   |
 | --------          | ---------                 | -----------     |
 | initPage          | Number                    | init page for show     |
-| speed             | Number (sec)              | per active's time     |
+| speed             | Number (ms)              | per active's time     |
 | expect_height     | Number (px)               |  image's actually height     |
 | imgArray          | Array                     | for example:[{src:'x.png',href:'x.html'}]    |
 | autoplay          | Boolean (default:false)   | autoplay    |
-
-### For example
-
-width of image bases on standard screen width(750)
-
-if image's height 750 * 280 ,when screen width is 375, the height is 140
-
 
 #### Example
     <Carousel
@@ -39,6 +32,11 @@ if image's height 750 * 280 ,when screen width is 375, the height is 140
       :imgArray = imgArray
       :autoplay = true
       ></Carousel>
+
 #### Run in local
     npm i install
     npm run dev
+
+#### PS
+width of image bases on standard screen width(750)
+if image's height 750 * 280 ,when screen width is 375, the height is 140

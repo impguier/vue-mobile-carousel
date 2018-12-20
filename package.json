@@ -1,10 +1,18 @@
 {
   "name": "vue-mobile-carousel",
   "description": "carousel",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "impguier@gmail.com",
   "license": "MIT",
   "private": false,
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com:impguier/vue-mobile-carousel.git"
+  },
+  "bugs": {
+    "url": "https://github.com/impguier/vue-mobile-carousel/issues"
+  },
+  "homepage": "https://github.com/impguier/vue-mobile-carousel#readme",
   "keywords":[
     "mobile",
     "vue",
