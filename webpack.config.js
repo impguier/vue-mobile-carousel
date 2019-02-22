@@ -4,7 +4,7 @@ var NODE_ENV = process.env.NODE_ENV
 module.exports = {
   entry: NODE_ENV === 'development' ? './src/main.js' : './src/',
   output: {
-    path: path.resolve(__dirname, './dist'),
+    path: path.resolve(__dirname, ''),
     publicPath: '/dist/',
     library: 'vueMobileCarousel',
     filename: 'vue-mobile-carousel.js',
