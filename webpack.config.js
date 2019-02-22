@@ -2,16 +2,16 @@ var path = require('path')
 var webpack = require('webpack')
 var NODE_ENV = process.env.NODE_ENV
 module.exports = {
-  entry: NODE_ENV == 'development' ? './src/main.js' : './src/',
+  entry: NODE_ENV === 'development' ? './src/main.js' : './src/',
   output: {
     path: path.resolve(__dirname, './dist'),
     publicPath: '/dist/',
     library: 'vueMobileCarousel',
     filename: 'vue-mobile-carousel.js',
-    libraryTarget: 'umd',
+    libraryTarget: 'umd'
   },
   resolve: {
-    extensions: [ '.js', '.vue'],
+    extensions: [ '.js','.vue'],
     modules: [
       path.join(__dirname, 'node_modules')
     ],
@@ -31,8 +31,9 @@ module.exports = {
         use: [
           'vue-style-loader',
           'css-loader'
-        ],
-      },      {
+        ]
+      },
+      {
         test: /\.vue$/,
         loader: 'vue-loader',
         options: {

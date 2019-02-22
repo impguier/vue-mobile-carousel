@@ -5,6 +5,7 @@
   "author": "impguier@gmail.com",
   "license": "MIT",
   "private": false,
+  "main":"dist/vue-mobile-carousel.min.js",
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com:impguier/vue-mobile-carousel.git"
