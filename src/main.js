@@ -5,4 +5,4 @@ let vm = new Vue({
   components: { App },
   template: '<App/>'
 })
-return vm
+module.exports = vm
