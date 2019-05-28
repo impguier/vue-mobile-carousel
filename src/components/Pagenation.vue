@@ -13,9 +13,9 @@
   .icon-circle{
     display:inline-block;
     border-radius: 100%;
-    width: 20px;
-    height: 20px;
-    margin-right: 10px;
+    width: 10px;
+    height: 10px;
+    margin-right: 15px;
     background:rgba(255, 255, 255, 0.8);
     transition: all ease-in .3s;
   }
@@ -23,8 +23,8 @@
     margin-right: 0;
   }
   .icon-circle.active{
-    width:60px;
-    border-radius: 20px;
+    width:36px;
+    border-radius: 50px;
     background: #fff;
   }
 </style>

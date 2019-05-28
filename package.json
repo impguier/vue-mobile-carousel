@@ -1,11 +1,11 @@
 {
   "name": "vue-mobile-carousel",
   "description": "carousel",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "author": "impguier@gmail.com",
   "license": "MIT",
   "private": false,
-  "main":"vue-mobile-carousel.min.js",
+  "main": "vue-mobile-carousel.min.js",
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com:impguier/vue-mobile-carousel.git"
@@ -14,7 +14,7 @@
     "url": "https://github.com/impguier/vue-mobile-carousel/issues"
   },
   "homepage": "https://github.com/impguier/vue-mobile-carousel#readme",
-  "keywords":[
+  "keywords": [
     "mobile",
     "vue",
     "carousel"
@@ -51,6 +51,8 @@
     "eslint-plugin-standard": "^4.0.0",
     "file-loader": "^1.1.4",
     "postcss-import": "^12.0.1",
+    "postcss-loader": "^3.0.0",
+    "postcss-px2rem": "^0.3.0",
     "postcss-url": "^8.0.0",
     "uglifyjs-webpack-plugin": "^2.0.1",
     "vue-loader": "^13.0.5",
