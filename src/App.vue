@@ -1,12 +1,12 @@
 <template>
   <div id="app">
     <Carousel
-      :initPage = 0
-      :speed = 3000
-      :expect_height = 280
-      :imgArray = imgArray
-      :autoplay = true
-      ></Carousel>
+      :initPage="0"
+      :speed="3000"
+      :expect_height="280"
+      :imgArray="imgArray"
+      :autoplay="true"
+    ></Carousel>
   </div>
 </template>
 
@@ -21,19 +21,19 @@ export default {
     return {
       imgArray: [
         {
-          src: 'https://static.hexindai.com/attachment/uploads/homepic/2018/11/30/1543572816_homepic.png',
+          src: './static/1.png',
           href: '/'
         },
         {
-          src: 'https://static.hexindai.com/attachment/uploads/homepic/2018/11/19/1542633499_homepic.png',
+          src: './static/2.png',
           href: '/'
         },
         {
-          src: 'https://static.hexindai.com/attachment/uploads/homepic/2018/11/02/1541109562_homepic.png',
+          src: './static/3.png',
           href: '/'
         },
         {
-          src: 'https://static.hexindai.com/attachment/uploads/homepic/2018/11/30/1543572582_homepic.png',
+          src: './static/4.png',
           href: '/'
         }
       ]
@@ -43,8 +43,8 @@ export default {
 </script>
 
 <style>
-body{
-  margin: 0
+body {
+  margin: 0;
 }
 a {
   -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
@@ -53,7 +53,7 @@ a {
   -moz-user-select: none;
 }
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

@@ -8,13 +8,13 @@
     width: 100%;
     text-align: center;
     position:absolute;
-    bottom: 0;
+    bottom: 20px;
   }
   .icon-circle{
     display:inline-block;
     border-radius: 100%;
-    width: 10px;
-    height: 10px;
+    width: 20px;
+    height: 20px;
     margin-right: 10px;
     background:rgba(255, 255, 255, 0.8);
     transition: all ease-in .3s;
@@ -23,7 +23,9 @@
     margin-right: 0;
   }
   .icon-circle.active{
-    background:rgba(0, 0, 0, 0.6);
+    width:60px;
+    border-radius: 20px;
+    background: #fff;
   }
 </style>
 <script>
