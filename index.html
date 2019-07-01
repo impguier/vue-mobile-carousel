@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>vue-mobile-carousel</title>
   </head>
-  <body>
+  <body style="background:pink">
     <div id="app"></div>
     <script>!function(e){var t,i,n,a=e.document,o=a.documentElement,d=(e.navigator.appVersion.match(/android/gi),e.navigator.appVersion.match(/iphone/gi)),l=e.devicePixelRatio;if(i=1/(t=d?Math.min(l,3):1),o.setAttribute("data-dpr",t),metaEl=a.createElement("meta"),metaEl.setAttribute("name","viewport"),metaEl.setAttribute("content","initial-scale="+i+", maximum-scale="+i+", minimum-scale="+i+", user-scalable=no"),o.firstElementChild)o.firstElementChild.appendChild(metaEl);else{var m=a.createElement("div");m.appendChild(metaEl),a.write(m.innerHTML)}function r(){var e=o.getBoundingClientRect().width/10;o.style.fontSize=e+"px"}e.addEventListener("resize",function(){clearTimeout(n),n=setTimeout(r,300)},!1),e.addEventListener("pageshow",function(e){e.persisted&&(clearTimeout(n),n=setTimeout(r,300))},!1),"complete"===a.readyState?a.body.style.fontSize=12*t+"px":a.addEventListener("DOMContentLoaded",function(e){a.body.style.fontSize=12*t+"px"},!1),r()}(window);</script>
     <script src="/dist/vue-mobile-carousel.js"></script>

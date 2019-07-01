@@ -6,40 +6,45 @@
       :expect_height="280"
       :imgArray="imgArray"
       :autoplay="true"
+      :navigator_pos="inner"
+      :normalClass="normalClass"
+      :activeClass="activeClass"
     ></Carousel>
   </div>
 </template>
 
 <script>
-import Carousel from './components/Carousel'
+import Carousel from "./components/Carousel";
 export default {
-  name: 'App',
+  name: "App",
   components: {
     Carousel
   },
-  data () {
+  data() {
     return {
+      normalClass: { background: "#f4f5f6" },
+      activeClass: { background: "#fff",width:'0.5rem','border-radius':'5px' },
       imgArray: [
         {
-          src: './static/1.png',
-          href: '/'
+          src: "./static/1.png",
+          href: "/"
         },
         {
-          src: './static/2.png',
-          href: '/'
+          src: "./static/2.png",
+          href: "/"
         },
         {
-          src: './static/3.png',
-          href: '/'
+          src: "./static/3.png",
+          href: "/"
         },
         {
-          src: './static/4.png',
-          href: '/'
+          src: "./static/4.png",
+          href: "/"
         }
       ]
-    }
+    };
   }
-}
+};
 </script>
 
 <style>

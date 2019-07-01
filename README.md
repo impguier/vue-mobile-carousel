@@ -19,11 +19,13 @@
 | key               | value                     |   description   |
 | --------          | ---------                 | -----------     |
 | initPage          | Number                    | init page for show     |
-| speed             | Number (ms)              | per active's time     |
+| speed             | Number (ms)               | per active's time     |
 | expect_height     | Number (px)               |  image's actually height     |
 | imgArray          | Array                     | for example:[{src:'x.png',href:'x.html'}]    |
 | autoplay          | Boolean (default:false)   | autoplay    |
-
+| navigator_pos     | String: inner | outer     | inner: pageniation is in banner, outer: pageniation is not
+| normalClass       | Object  (css)             | pageniation-element's style
+| navigator_pos     | Object  (css)             | actived pageniation-element's style
 #### Example
     <Carousel
       :initPage = 0
@@ -31,6 +33,9 @@
       :expect_height = 280
       :imgArray = imgArray
       :autoplay = true
+      :navigator_pos='inner'
+      :normalClass={background:#f4f5f6}
+      :activeClass={background:#fff}
       ></Carousel>
 
 #### Run in local
