@@ -26,6 +26,7 @@
 | navigator_pos     | String: inner | outer     | inner: pageniation is in banner, outer: pageniation is not
 | normalClass       | Object  (css)             | pageniation-element's style
 | navigator_pos     | Object  (css)             | actived pageniation-element's style
+| beforeClick       | Event                     | beforeClick
 #### Example
     <Carousel
       :initPage = 0

@@ -36,7 +36,7 @@
           :key="index"
           v-for="(item,index) in imgArray"
         >
-          <a @click="itemClick" class="img-container">
+          <a @click="itemClick(item,index)" class="img-container">
             <FakeImg :src="item.src" :height="height" :width="WIDTH"></FakeImg>
           </a>
         </li>
@@ -144,8 +144,8 @@ export default {
     }
   },
   methods: {
-    itemClick (item) {
-      this.$emit('beforeClick', item);
+    itemClick (item,ind) {
+      this.$emit('beforeClick', item,ind);
       window.location.href = item.href;
     },
     init() {
