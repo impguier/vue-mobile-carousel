@@ -37,7 +37,7 @@
           v-for="(item,index) in imgArray"
         >
           <a @click="itemClick(item,index)" class="img-container">
-            <FakeImg :src="item.src" :height="height" :width="WIDTH"></FakeImg>
+            <FakeImg :src="item.src" :height="parseInt(height)" :width="parseInt(WIDTH)"></FakeImg>
           </a>
         </li>
         <li
