@@ -6,9 +6,10 @@
       :expect_height="280"
       :imgArray="imgArray"
       :autoplay="true"
-      :navigator_pos="inner"
+      navigator_pos="inner"
       :normalClass="normalClass"
       :activeClass="activeClass"
+      @beforeClick=beforeClick
     ></Carousel>
   </div>
 </template>
@@ -19,6 +20,11 @@ export default {
   name: "App",
   components: {
     Carousel
+  },
+  methods:{
+    beforeClick () {
+      console.log('clicked')
+    }
   },
   data() {
     return {

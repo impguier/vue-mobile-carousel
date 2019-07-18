@@ -12,13 +12,13 @@
   text-align: center;
 }
 .pagenation-navi.inner {
-  margin-top: 20px;
-}
-.pagenation-navi.outer {
   width: 100%;
   text-align: center;
   position: absolute;
   bottom: 20px;
+}
+.pagenation-navi.outer {
+  margin-top: 20px;
 }
 .icon-circle {
   display: inline-block;
