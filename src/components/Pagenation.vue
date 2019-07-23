@@ -10,6 +10,8 @@
 .pagenation-navi {
   width: 100%;
   text-align: center;
+  display:flex;
+  justify-content: center;
 }
 .pagenation-navi.inner {
   width: 100%;
@@ -21,7 +23,7 @@
   margin-top: 20px;
 }
 .icon-circle {
-  display: inline-block;
+  display: block;
   border-radius: 100%;
   width: 10px;
   height: 10px;
